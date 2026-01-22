@@ -5,6 +5,7 @@ pipeline {
         stage('Clone from GitHub') {
             steps {
                 git branch: 'main',
+                    credentialsId: 'github-token',
                     url: 'https://github.com/sdarshandeshpande-395/employee-attendance.git'
             }
         }
@@ -15,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Run Application') {
+        stage('Run Attendance Application') {
             steps {
                 sh '''
                 pkill -f employee-attendance || true
